@@ -1,0 +1,46 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" routerLink="/statistics">ADMINKA</a>
+    <button class="navbar-toggler" type="button" aria-controls="navbar-menu"
+            aria-label="Toggle navigation" (click)="toggleMenu()" [attr.aria-expanded]="!menuHidden">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbar-menu" class="collapse navbar-collapse float-xs-none" [ngbCollapse]="menuHidden">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link text-capitalize" routerLink="/statistics" routerLinkActive="active">
+          <i class="fas fa-chart-line"></i>
+          <span translate>Статистика</span>
+        </a>
+        <a class="nav-item nav-link text-capitalize" routerLink="/order" routerLinkActive="active">
+          <i class="fas fa-phone"></i>
+          <span translate>Замовлення</span>
+        </a>
+        <a class="nav-item nav-link text-capitalize" routerLink="/companies" routerLinkActive="active">
+          <i class="fas fa-building"></i>
+          <span translate>Евакуаторні служби</span>
+        </a>
+        <a class="nav-item nav-link text-capitalize" routerLink="/tow-trucks" routerLinkActive="active">
+          <i class="fas fa-truck"></i>
+          <span translate>Евакуатори</span>
+        </a>
+        <a class="nav-item nav-link text-capitalize" routerLink="/cutomers" routerLinkActive="active">
+          <i class="fas fa-users"></i>
+          <span translate>Клієнти</span>
+        </a>
+      </div>
+      <div class="navbar-nav ml-auto">
+        <div class="nav-item" ngbDropdown placement="bottom-right">
+          <a id="user-dropdown" class="nav-link" ngbDropdownToggle>
+            <i class="fas fa-user-circle"></i>
+          </a>
+          <div ngbDropdownMenu aria-labelledby="user-dropdown">
+            <h6 class="dropdown-header">
+              <span translate>Увійшов як</span> <b>{{username}}</b></h6>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item" (click)="logout()" translate>Вийти</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
