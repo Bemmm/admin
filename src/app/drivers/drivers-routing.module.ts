@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { Route, extract } from '@app/core';
-import { TrucksComponent } from '@app/trucks/trucks.component';
+import { DriversComponent } from '@app/drivers/drivers.component';
 
 const routes: Routes = [
   Route.withShell([
-    { path: '', redirectTo: '/trucks', pathMatch: 'full' },
-    { path: 'trucks', component: TrucksComponent, data: { title: extract('trucks') } }
+    { path: '', redirectTo: '/drivers', pathMatch: 'full' },
+    { path: 'drivers', component: DriversComponent, data: { title: extract('drivers') } }
   ])
 ];
 
@@ -16,4 +16,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
-export class TrucksRoutingModule { }
+export class DriversRoutingModule { }

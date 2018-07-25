@@ -1,8 +1,8 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand" routerLink="/statistics">ADMINKA</a>
-    <button class="navbar-toggler" type="button" aria-controls="navbar-menu"
-            aria-label="Toggle navigation" (click)="toggleMenu()" [attr.aria-expanded]="!menuHidden">
+    <button class="navbar-toggler" type="button" aria-controls="navbar-menu" aria-label="Toggle navigation" (click)="toggleMenu()"
+      [attr.aria-expanded]="!menuHidden">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div id="navbar-menu" class="collapse navbar-collapse float-xs-none" [ngbCollapse]="menuHidden">
@@ -19,9 +19,9 @@
           <i class="fas fa-building"></i>
           <span translate>Евакуаторні служби</span>
         </a>
-        <a class="nav-item nav-link text-capitalize" routerLink="/tow-trucks" routerLinkActive="active">
+        <a class="nav-item nav-link text-capitalize" routerLink="/drivers" routerLinkActive="active">
           <i class="fas fa-truck"></i>
-          <span translate>Евакуатори</span>
+          <span translate>Евакуаторщики</span>
         </a>
         <a class="nav-item nav-link text-capitalize" routerLink="/cutomers" routerLinkActive="active">
           <i class="fas fa-users"></i>
@@ -35,7 +35,9 @@
           </a>
           <div ngbDropdownMenu aria-labelledby="user-dropdown">
             <h6 class="dropdown-header">
-              <span translate>Увійшов як</span> <b>{{username}}</b></h6>
+              <span translate>Увійшов як</span>
+              <b>{{username}}</b>
+            </h6>
             <div class="dropdown-divider"></div>
             <button class="dropdown-item" (click)="logout()" translate>Вийти</button>
           </div>

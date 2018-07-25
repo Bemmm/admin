@@ -4,8 +4,8 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
-import { TrucksRoutingModule } from '@app/trucks/trucks-routing.module';
-import { TrucksComponent } from '@app/trucks/trucks.component';
+import { DriversRoutingModule } from '@app/drivers/drivers-routing.module';
+import { DriversComponent } from '@app/drivers/drivers.component';
 
 @NgModule({
   imports: [
@@ -13,12 +13,12 @@ import { TrucksComponent } from '@app/trucks/trucks.component';
     TranslateModule,
     CoreModule,
     SharedModule,
-    TrucksRoutingModule
+    DriversRoutingModule
   ],
   declarations: [
-    TrucksComponent
+    DriversComponent
   ],
   providers: [
   ]
 })
-export class TrucksModule { }
+export class DriversModule { }

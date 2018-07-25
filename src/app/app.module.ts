@@ -12,7 +12,7 @@ import { SharedModule } from '@app/shared';
 import { StatisticsModule } from '@app/statistics/statistics.module';
 import { OrderModule } from '@app/order/order.module';
 import { CompaniesModule } from '@app/companies/companies.module';
-import { TrucksModule } from '@app/trucks/trucks.module';
+import { DriversModule } from '@app/drivers/drivers.module';
 import { CustomersModule } from '@app/customers/customers.module';
 import { LoginModule } from '@app/login/login.module';
 import { AppComponent } from '@app/app.component';
@@ -31,7 +31,7 @@ import { AppRoutingModule } from '@app/app-routing.module';
     StatisticsModule,
     OrderModule,
     CompaniesModule,
-    TrucksModule,
+    DriversModule,
     CustomersModule,
     LoginModule,
     AppRoutingModule

@@ -3,11 +3,11 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
-import { TrucksComponent } from '@app/trucks/trucks.component';
+import { DriversComponent } from '@app/drivers/drivers.component';
 
-describe('TrucksComponent', () => {
-  let component: TrucksComponent;
-  let fixture: ComponentFixture<TrucksComponent>;
+describe('DriversComponent', () => {
+  let component: DriversComponent;
+  let fixture: ComponentFixture<DriversComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -16,14 +16,14 @@ describe('TrucksComponent', () => {
           SharedModule,
           HttpClientTestingModule
         ],
-        declarations: [TrucksComponent],
+        declarations: [DriversComponent],
         providers: []
       })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TrucksComponent);
+    fixture = TestBed.createComponent(DriversComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
