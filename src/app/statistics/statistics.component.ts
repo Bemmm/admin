@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { finalize } from 'rxjs/operators';
+import { StatisticsService } from '@app/statistics/statistics.service';
 
 
 @Component({
@@ -8,41 +9,20 @@ import { finalize } from 'rxjs/operators';
   styleUrls: ['./statistics.component.scss']
 })
 export class StatisticsComponent implements OnInit {
-  statistics: any;
-  constructor() {
-    this.statistics = [
-      {
-        "_id": "users",
-        "count": 11
-      },
-      {
-        "_id": "company",
-        "count": 1,
-      },
-      {
-        "_id": "customer",
-        "count": 6,
-      },
-      {
-        "_id": "driver",
-        "count": 4,
-      },
-      {
-        "_id": "cars",
-        "count": 20
-      },
-      {
-        "_id": "orders",
-        "count": 20,
-      }
-    ]
+  isLoading: boolean;
+  statistics : Object[];
+  constructor(private statisticsService: StatisticsService) {
   }
   ngOnInit() {
+    this.isLoading = true;
+    this.statisticsService.getStatistics()
+      .pipe(finalize(() => { this.isLoading = false; }))
+      .subscribe((data: Object[]) => { this.statistics = data; });
   }
   getTitle(id: string) {
     switch (id) {
       case 'users':
-        return 'Всього аккаунтів';
+        return 'Аккаунтів';
       case 'cars':
         return 'Евакуаторів';
       case 'orders':
@@ -55,4 +35,21 @@ export class StatisticsComponent implements OnInit {
         return 'Користувачів';
     }
   }
+  getIcon(id: any) {
+    switch (id) {
+      case 'users':
+        return 'users';
+      case 'cars':
+        return 'truck';
+      case 'orders':
+        return 'phone';
+      case 'company':
+        return 'building';
+      case 'driver':
+        return 'car';
+      case 'customer':
+        return 'user-circle';
+    }
+  }
+
 }

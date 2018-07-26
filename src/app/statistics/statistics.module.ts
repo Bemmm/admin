@@ -6,6 +6,7 @@ import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
 import { StatisticsRoutingModule } from '@app/statistics/statistics-routing.module';
 import { StatisticsComponent } from '@app/statistics/statistics.component';
+import { StatisticsService } from '@app/statistics/statistics.service';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { StatisticsComponent } from '@app/statistics/statistics.component';
     StatisticsComponent
   ],
   providers: [
+    StatisticsService
   ]
 })
 export class StatisticsModule { }

@@ -1,8 +1,9 @@
 <div class="container-fluid">
   <div class="row statistics">
     <div class="col-12 text-center"><h1>Загальна статистика</h1></div>
-    <div *ngFor="let card of statistics; let i = index" class="col-4 text-center">
+    <div *ngFor="let card of statistics; let i = index" class="col-md-4 col-xs-12 col-sm-6 text-center">
       <div class="card statistics__item statistics__item-{{i+1}}">
+        <i class="fas fa-{{getIcon(card._id)}} fa-3x mb-1"></i>
         <h5>{{getTitle(card._id)}}</h5>
         <h1>{{card.count}}</h1>
       </div>

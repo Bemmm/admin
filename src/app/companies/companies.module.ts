@@ -6,6 +6,7 @@ import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
 import { CompaniesRoutingModule } from '@app/companies/companies-routing.module';
 import { CompaniesComponent } from '@app/companies/companies.component';
+import { CompaniesService } from '@app/companies/companies.service';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { CompaniesComponent } from '@app/companies/companies.component';
     CompaniesComponent
   ],
   providers: [
+    CompaniesService
   ]
 })
 export class CompaniesModule { }
