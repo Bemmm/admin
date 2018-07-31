@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { finalize } from 'rxjs/operators';
+import { DriversService } from '@app/drivers/drivers.service';
+import { AuthenticationService } from '@app/core';
 
 
 @Component({
@@ -9,131 +11,20 @@ import { finalize } from 'rxjs/operators';
 })
 export class DriversComponent implements OnInit {
   drivers: any;
+  isLoading: boolean;
+  credentials: any;
   displayDialog: any = false;
-  constructor() {
-    this.drivers = [
-      {
-        address: {
-          type: "",
-          coordinates: [],
-          label: "Вінниця"
-        },
-        official_address: {
-          type: "",
-          coordinates: [],
-          label: ""
-        },
-        physical_address: {
-          type: "",
-          coordinates: [],
-          label: ""
-        },
-        cars: [],
-        company_users: [],
-        company_cars: [],
-        company_id: [],
-        _id: "",
-        ownership: "",
-        passport: "",
-        name: "test",
-        email: "asdasd@asd.asd",
-        birthday: "28.06.12",
-        role: "driver",
-        phone: "390989422971",
-      },
-      {
-        address: {
-          type: "",
-          coordinates: [],
-          label: " Сіті вінниця"
-        },
-        official_address: {
-          type: "",
-          coordinates: [],
-          label: ""
-        },
-        physical_address: {
-          type: "",
-          coordinates: [],
-          label: ""
-        },
-        cars: [],
-        company_users: [],
-        company_cars: [],
-        company_id: [],
-        _id: "",
-        ownership: "",
-        passport: "",
-        name: "test",
-        email: "asdasd@asd.asd",
-        birthday: "28.06.12",
-        role: "driver",
-        phone: "390989422971",
-      },
-      {
-        address: {
-          type: "",
-          coordinates: [],
-          label: ""
-        },
-        official_address: {
-          type: "",
-          coordinates: [],
-          label: ""
-        },
-        physical_address: {
-          type: "",
-          coordinates: [],
-          label: ""
-        },
-        cars: [],
-        company_users: [],
-        company_cars: [],
-        company_id: [],
-        _id: "",
-        ownership: "",
-        passport: "",
-        name: "test",
-        email: "asdasd@asd.asd",
-        birthday: "28.06.12",
-        role: "driver",
-        phone: "390989422971",
-      },
-      {
-        address: {
-          type: "",
-          coordinates: [],
-          label: ""
-        },
-        official_address: {
-          type: "",
-          coordinates: [],
-          label: ""
-        },
-        physical_address: {
-          type: "",
-          coordinates: [],
-          label: ""
-        },
-        cars: [],
-        company_users: [],
-        company_cars: [],
-        company_id: [],
-        _id: "",
-        ownership: "",
-        passport: "",
-        name: "test",
-        email: "asdasd@asd.asd",
-        birthday: "28.06.12",
-        role: "driver",
-        phone: "390989422971",
-      }
-    ]
+  constructor(private driversService: DriversService, private authenticationService: AuthenticationService) {
+    this.isLoading = true;
+    this.credentials = this.authenticationService.credentials;
   }
 
   ngOnInit() {
+    this.driversService.getDrivers(this.credentials['x-access-token'])
+      .pipe(finalize(() => { this.isLoading = false; }))
+      .subscribe((data: Object[]) => { this.drivers = data; console.log(this.drivers) });
   }
   showFullInfo() {
-  this.displayDialog = !this.displayDialog;
+    this.displayDialog = !this.displayDialog;
   }
 }

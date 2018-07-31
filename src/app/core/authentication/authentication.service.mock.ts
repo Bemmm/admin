@@ -5,14 +5,14 @@ import { Credentials, LoginContext } from '@app/core/authentication/authenticati
 export class MockAuthenticationService {
 
   credentials: Credentials | null = {
-    username: 'test',
-    token: '123'
+    phone: 'test',
+    'x-access-token': '123'
   };
 
   login(context: LoginContext): Observable<Credentials> {
     return of({
-      username: context.username,
-      token: '123456'
+      phone: context.phone,
+      'x-access-token': '123456'
     });
   }
 

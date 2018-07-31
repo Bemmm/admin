@@ -6,7 +6,7 @@ import { map, catchError } from 'rxjs/operators';
 
 const routes = {
   // quote: (c: RandomQuoteContext) => `/jokes/random?category=${c.category}`,
-  statistics: `/main-statistic`
+  drivers: `/drivers?coordinates=49.18652812107726,28.50651741027832`
 };
 
 // export interface RandomQuoteContext {
@@ -15,21 +15,21 @@ const routes = {
 // }
 
 @Injectable()
-export class StatisticsService {
+export class DriversService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getStatistics(token: string): Observable<Object[]> {
+  getDrivers(token:any): Observable<Object[]> {
     return this.httpClient
       .cache()
-      .get(routes.statistics, {
+      .get(routes.drivers, {
         headers: {
           'x-access-token': token
         }
       })
       .pipe(
-        map((body: any) => body),
-        catchError(() => of('Error, could not load the statistic :-('))
+        map((body: any) => body.users),
+        catchError(() => of('Error, could not load company data :-('))
       );
   }
 

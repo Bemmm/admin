@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map, catchError } from 'rxjs/operators';
 
 export interface Credentials {
   // Customize received credentials here
-  username: string;
-  token: string;
+  phone: string;
+  name?: string;
+  'x-access-token': string;
 }
 
 export interface LoginContext {
-  username: string;
+  phone: string;
   password: string;
-  remember?: boolean;
 }
 
 const credentialsKey = 'credentials';
@@ -24,7 +26,7 @@ export class AuthenticationService {
 
   private _credentials: Credentials | null;
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
     const savedCredentials = sessionStorage.getItem(credentialsKey) || localStorage.getItem(credentialsKey);
     if (savedCredentials) {
       this._credentials = JSON.parse(savedCredentials);
@@ -38,12 +40,17 @@ export class AuthenticationService {
    */
   login(context: LoginContext): Observable<Credentials> {
     // Replace by proper authentication call
-    const data = {
-      username: context.username,
-      token: '123456'
-    };
-    this.setCredentials(data, context.remember);
-    return of(data);
+
+    return this.httpClient
+      .cache()
+      .post('/user/login', context)
+      .pipe(
+        map((body: any) => {
+          this.setCredentials(body, true);
+          return body
+        }),
+        catchError(() => of('Error, could not login :-(')),
+    );
   }
 
   /**

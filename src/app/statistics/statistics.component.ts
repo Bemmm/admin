@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { finalize } from 'rxjs/operators';
 import { StatisticsService } from '@app/statistics/statistics.service';
+import { AuthenticationService } from '@app/core';
 
 
 @Component({
@@ -10,18 +11,20 @@ import { StatisticsService } from '@app/statistics/statistics.service';
 })
 export class StatisticsComponent implements OnInit {
   isLoading: boolean;
-  statistics : Object[];
-  constructor(private statisticsService: StatisticsService) {
+  credentials: any;
+  statistics: Object[];
+  constructor(private statisticsService: StatisticsService, private authenticationService: AuthenticationService) {
   }
   ngOnInit() {
+    this.credentials = this.authenticationService.credentials;
     this.isLoading = true;
-    this.statisticsService.getStatistics()
+    this.statisticsService.getStatistics(this.credentials['x-access-token'])
       .pipe(finalize(() => { this.isLoading = false; }))
-      .subscribe((data: Object[]) => { this.statistics = data; });
+      .subscribe((data: any) => { this.statistics = data.data; });
   }
   getTitle(id: string) {
     switch (id) {
-      case 'users':
+      case 'user':
         return 'Аккаунтів';
       case 'cars':
         return 'Евакуаторів';
@@ -37,7 +40,7 @@ export class StatisticsComponent implements OnInit {
   }
   getIcon(id: any) {
     switch (id) {
-      case 'users':
+      case 'user':
         return 'users';
       case 'cars':
         return 'truck';

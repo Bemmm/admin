@@ -6,6 +6,7 @@ import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
 import { DriversRoutingModule } from '@app/drivers/drivers-routing.module';
 import { DriversComponent } from '@app/drivers/drivers.component';
+import { DriversService } from '@app/drivers/drivers.service';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { DriversComponent } from '@app/drivers/drivers.component';
     DriversComponent
   ],
   providers: [
+    DriversService
   ]
 })
 export class DriversModule { }
