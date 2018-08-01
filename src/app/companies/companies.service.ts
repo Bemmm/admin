@@ -5,8 +5,7 @@ import { of } from "rxjs";
 import { map, catchError } from 'rxjs/operators';
 
 const routes = {
-  // quote: (c: RandomQuoteContext) => `/jokes/random?category=${c.category}`,
-  companies: (p?: any) => `/companies?coordinates=49.18652812107726,28.50651741027832`
+  companies: `/companies`
 };
 
 // export interface RandomQuoteContext {
@@ -19,47 +18,10 @@ export class CompaniesService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getCompanies(token:any): Observable<Object[]> {
-    // return of([
-    //   {
-    //     users: [
-    //       {
-
-    //         address: {
-    //           type: "",
-    //           coordinates: [],
-    //           label: "Вінниця"
-    //         },
-    //         official_address: {
-    //           type: "",
-    //           coordinates: [],
-    //           label: ""
-    //         },
-    //         physical_address: {
-    //           type: "",
-    //           coordinates: [],
-    //           label: ""
-    //         },
-    //         cars: ['1', '2'],
-    //         company_users: [],
-    //         company_cars: [],
-    //         company_id: [],
-    //         _id: "",
-    //         passport: '',
-    //         name:'',
-    //         email:'',
-    //         birthday:'',
-    //         role:'',
-    //         phone:''
-    //       }
-    //     ],
-    //     count: 2,
-    //     success: true
-    //   }
-    // ])
+  getCompanies(token: any): Observable<Object[]> {
     return this.httpClient
       .cache()
-      .get(routes.companies(), {
+      .get(routes.companies, {
         headers: {
           'x-access-token': token
         }

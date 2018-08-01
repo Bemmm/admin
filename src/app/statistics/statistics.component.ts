@@ -26,7 +26,7 @@ export class StatisticsComponent implements OnInit {
     switch (id) {
       case 'user':
         return 'Аккаунтів';
-      case 'cars':
+      case 'trucks':
         return 'Евакуаторів';
       case 'orders':
         return 'Замовлень';
@@ -42,7 +42,7 @@ export class StatisticsComponent implements OnInit {
     switch (id) {
       case 'user':
         return 'users';
-      case 'cars':
+      case 'trucks':
         return 'truck';
       case 'orders':
         return 'phone';

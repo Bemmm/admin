@@ -6,7 +6,7 @@ import { map, catchError } from 'rxjs/operators';
 
 const routes = {
   // quote: (c: RandomQuoteContext) => `/jokes/random?category=${c.category}`,
-  drivers: `/drivers?coordinates=49.18652812107726,28.50651741027832`
+  drivers: `/drivers`
 };
 
 // export interface RandomQuoteContext {
