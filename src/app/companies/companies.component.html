@@ -87,7 +87,7 @@
             <div class="row">
               <div class="col-4">{{car.registration_number}}</div>
               <div class="col-4">{{car.address.label}}</div>
-              <div class="col-4">{{car.car_attributes.brand.name}}/{{car.car_attributes.model.name}}</div>
+              <div class="col-4">{{car.car_attributes.brand ? car.car_attributes.brand.name : '' }}/{{car.car_attributes.model ? car.car_attributes.model.name : ''}}</div>
               <div class="col-4">{{car.passengers_count}}</div>
             </div>
           </ng-template>

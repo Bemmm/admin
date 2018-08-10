@@ -27,10 +27,8 @@ export class CompaniesComponent implements OnInit {
       .subscribe((data: Object[]) => { this.companies = data; console.log(this.companies) });
   }
   showFullInfo(item: any) {
-    console.log('item', item, 'controls', this.companyForm.controls);
     this.companyForm.patchValue(item);
     this.displayDialog = !this.displayDialog;
-    console.log(this.companyForm);
 
   }
   private createForm() {
